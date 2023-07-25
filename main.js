@@ -10,6 +10,7 @@ var scene = document.querySelector('a-scene');
 
 scene.addEventListener('loaded', function (e) {
     loadingScene.remove();
+    scene.systems.arjs.el.isAR = true;
     console.log('canvas',scene.canvas);
     console.log(scene.systems);
 });

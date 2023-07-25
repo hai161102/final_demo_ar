@@ -3,8 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
-    <meta aframe-injected="" name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width">
     <link rel="icon" href="./assets/images/Logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,6 +64,8 @@
     <!-- Marker Tracking Import -->
     <script src="./node_modules/aframe/dist/aframe.min.js"></script>
     <script src="./node_modules/@ar-js-org/ar.js/aframe/build/aframe-ar.js"></script>
+    <script src="/node_modules/platform/platform.js"></script>
+    <script src="./node_modules/aframe-always-fullscreen-component/dist/aframe-always-fullscreen-component.min.js"></script>
 </head>
 
 <body>
@@ -82,8 +83,8 @@
         </div>
     </div>
     <a-scene id="scene" vr-mode-ui="enabled: false;"
-        arjs="debugUIEnabled: false; patternRatio:0.90; sourceWidth:1440; sourceHeight:1080; displayWidth: 1440; displayHeight: 1090;"
-        device-orientation-permission-ui="enabled: false" loading-screen="enabled: false">
+        arjs="debugUIEnabled: false; patternRatio:0.90; sourceWidth:1440; sourceHeight:1080; displayWidth: 1440; displayHeight: 1080;"
+       always-fullscreen="platform:all">
         <a-assets>
             <a-asset-item id="girl" src="./assets/model/girl.gltf"></a-asset-item>
         </a-assets>
@@ -105,7 +106,7 @@
             <a-light type="ambient" color="#FFFFFF" intensity="0.8"></a-light>
             <a-entity id="girlModel" gltf-model="#girl"></a-entity>
         </a-marker>
-        <a-entity camera></a-entity>
+        <a-entity camera ></a-entity>
     </a-scene>
     <script type="module" src="./main.js"></script>
 
