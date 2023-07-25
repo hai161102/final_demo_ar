@@ -11,10 +11,9 @@ var scene = document.querySelector('a-scene');
 scene.addEventListener('loaded', function (e) {
     loadingScene.remove();
     scene.systems.arjs.el.isAR = true;
-    console.log('canvas',scene.canvas);
+    console.log('canvas', scene.canvas);
     console.log(scene.systems);
 });
-document.getElementById('scene').addEventListener('click', (e) => {toggleFullScreen();});
 let percent = 0;
 let currentProgress = 0;
 
@@ -79,28 +78,3 @@ function loadModel() {
         });
     });
 }
-
-function toggleFullScreen() {
-    var doc = window.document;
-    var docEl = doc.getElementById('scene');
-  
-    var requestFullScreen =
-      docEl.requestFullscreen ||
-      docEl.mozRequestFullScreen ||
-      docEl.webkitRequestFullScreen ||
-      docEl.msRequestFullscreen;
-    var cancelFullScreen =
-      doc.exitFullscreen ||
-      doc.mozCancelFullScreen ||
-      doc.webkitExitFullscreen ||
-      doc.msExitFullscreen;
-  
-    if (
-      !doc.fullscreenElement &&
-      !doc.mozFullScreenElement &&
-      !doc.webkitFullscreenElement &&
-      !doc.msFullscreenElement
-    ) {
-      requestFullScreen.call(docEl);
-    }
-  }
