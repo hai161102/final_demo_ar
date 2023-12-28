@@ -3,10 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta aframe-injected="" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no, user-scalable=no">
+    <meta aframe-injected="" name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no, user-scalable=no">
     <meta aframe-injected="" name="mobile-web-app-capable" content="yes">
     <meta aframe-injected="" name="apple-mobile-web-app-capable" content="yes">
-    <link rel="icon" href="./assets/images/Logo.png">
+    <link rel="icon" href="images/Logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -62,19 +63,16 @@
             border-radius: 5px;
         }
     </style>
-
-    <!-- Marker Tracking Import -->
-    <script src="./node_modules/aframe/dist/aframe.min.js"></script>
-    <script src="./node_modules/@ar-js-org/ar.js/aframe/build/aframe-ar.js"></script>
-    <script src="./node_modules/@ar-js-org/ar.js/aframe/build/aframe-ar-new-location-only.js"></script>
-    <script src="./node_modules/platform/platform.js"></script>
-    <script src="./node_modules/aframe-always-fullscreen-component/dist/aframe-always-fullscreen-component.min.js"></script>
+    <script src="./js/aframe.min.js"></script>
+    <script src="./js/aframe-ar.js"></script>
+    <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    
 </head>
 
-<body>
+<body style="margin: 0px; overflow: hidden;">
     <div id="loading-scene">
         <div id="logo">
-            <img src="./assets/images/Logo.png" />
+            <img src="./images/Logo.png" />
         </div>
         <div id="loading-text">
             <h1>Loading...</h1>
@@ -85,13 +83,16 @@
             <div id="bar"></div>
         </div>
     </div>
-    <a-scene embedded id="scene" 
+
+    <a-scene embedded id="scene"
         arjs="debugUIEnabled: false; patternRatio:0.90; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;"
-       always-fullscreen="platform:all">
+        always-fullscreen="platform:all">
+
         <a-assets>
-            <a-asset-item id="girl" src="./assets/model/girl.gltf"></a-asset-item>
+            <a-asset-item id="girl" src="model/jidao.gltf"></a-asset-item>
         </a-assets>
-        <a-marker type="pattern" url="./assets/data/pattern-qrcode_rainbow.patt" preset="custom">
+
+        <a-marker type="pattern" url="data/pattern-qrcode_rainbow.patt">
             <a-entity light="
                 type: directional;
                 color: #FFFFFF;
@@ -107,12 +108,15 @@
                 target: #girlModel" xrextras-attach="target: girlModel; offset: 1 2 0.5" position="1 4.3 2.5">
             </a-entity>
             <a-light type="ambient" color="#FFFFFF" intensity="0.8"></a-light>
-            <a-entity id="girlModel" gltf-model="#girl"></a-entity>
+            <a-entity id="girlModel" position="0 0 0"
+                scale="5 5 5" rotation="-90 0 0" gltf-model="#girl" animation-mixer>
+            </a-entity>
         </a-marker>
-        <a-entity camera ></a-entity>
+
+        <a-entity camera></a-entity>
+
     </a-scene>
     <script type="module" src="./main.js"></script>
-
 </body>
 
 </html>
